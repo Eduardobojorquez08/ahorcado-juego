@@ -10,7 +10,12 @@ Un juego del ahorcado web hecho con Flask y SQLite. Adivina la palabra antes de 
 4. Tienes 6 vidas — cada letra incorrecta pierde una
 5. ¡Adivina la palabra completa antes de quedarte sin vidas!
 
- 
+Screenshots
+
+![Pantalla de inicio](screenshots/inicio.png)
+![Jugando](screenshots/juego.png)
+
+
  Categorías
 
 - Cantantes
