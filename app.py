@@ -2,10 +2,57 @@ from flask import Flask, render_template, request, session, redirect, url_for
 import random
 from database import get_db
 from flask import jsonify
+import os
 
 
 app = Flask(__name__)
 app.secret_key = 'Eduardoahorcado09'
+
+
+def inicializar_base():
+    db = get_db()
+    db.execute('''CREATE TABLE IF NOT EXISTS palabras (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        palabra TEXT NOT NULL,
+        categoria TEXT NOT NULL
+    )''')
+    
+    count = db.execute("SELECT COUNT(*) FROM palabras").fetchone()[0]
+    
+    if count == 0:
+        palabras = [
+            ('drake', 'cantantes'), ('victormendivil', 'cantantes'),
+            ('badbunny', 'cantantes'), ('neton', 'cantantes'),
+            ('kendricklamar', 'cantantes'), ('feid', 'cantantes'),
+            ('luismiguel', 'cantantes'), ('avengers', 'peliculas'),
+            ('conjuro', 'peliculas'), ('fightclub', 'peliculas'),
+            ('cars', 'peliculas'), ('spiderman', 'peliculas'),
+            ('starwars', 'peliculas'), ('toystory', 'peliculas'),
+            ('perro', 'animales'), ('gato', 'animales'),
+            ('tigre', 'animales'), ('hipopotamo', 'animales'),
+            ('elefante', 'animales'), ('simio', 'animales'),
+            ('serpiente', 'animales'), ('minecraft', 'videojuegos'),
+            ('fortnite', 'videojuegos'), ('pokemon', 'videojuegos'),
+            ('zelda', 'videojuegos'), ('mario', 'videojuegos'),
+            ('halo', 'videojuegos'), ('fifa', 'videojuegos'),
+            ('callofduty', 'videojuegos'), ('gta', 'videojuegos'),
+            ('mexico', 'paises'), ('brasil', 'paises'),
+            ('argentina', 'paises'), ('japon', 'paises'),
+            ('francia', 'paises'), ('alemania', 'paises'),
+            ('australia', 'paises'), ('canada', 'paises'),
+            ('egipto', 'paises'), ('china', 'paises'),
+            ('pizza', 'comida'), ('hamburguesa', 'comida'),
+            ('sushi', 'comida'), ('tacos', 'comida'),
+            ('ramen', 'comida'), ('lasagna', 'comida'),
+            ('burrito', 'comida'), ('enchiladas', 'comida'),
+            ('ceviche', 'comida'), ('pozole', 'comida'),
+        ]
+        db.executemany('INSERT INTO palabras (palabra, categoria) VALUES (?, ?)', palabras)
+        db.commit()
+    db.close()
+
+inicializar_base()
+
 
 @app.route('/')
 def index():
