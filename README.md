@@ -2,7 +2,7 @@
 
 Un juego del ahorcado web hecho con Flask y SQLite. Adivina la palabra antes de quedarte sin vidas.
 
-¿Cómo jugar?
+Cómo jugar?
 
 1. Entra al juego y presiona **Jugar**
 2. Se te asignará una palabra de una categoría aleatoria
@@ -39,6 +39,5 @@ Screenshots
 - Letras usadas visibles en pantalla
 - Animación de confeti al ganar
 - Animación de shake al perder
-- Diseño responsivo para móvil y escritorio
 
-Desarrollado por: Eduardo Bojórquez — estudiante de preparatoria.
+Desarrollado por: Eduardo Bojórquez — Estudiante de preparatoria.
